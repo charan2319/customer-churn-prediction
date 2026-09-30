@@ -1,0 +1,21 @@
+# Python Virtual Environment
+venv/
+.venv/
+env/
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# IDE and OS files
+.DS_Store
+.vscode/
+.idea/
+
+# Jupyter Notebook Checkpoints & Plots
+.ipynb_checkpoints/
+notebooks/plots/
+
+# Environment Variables
+.env

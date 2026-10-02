@@ -37,7 +37,7 @@ Customer attrition (churn) is a critical challenge in the telecom industry. Acqu
                               ↓
                      Data Understanding
                               ↓
-                 Exploratory Data Analysis (EDA)
+                 Exploratory Data Analysis (`src/eda.py`)
                               ↓
                         Data Cleaning
                      (TotalCharges → float)
@@ -146,10 +146,8 @@ customer-churn-prediction/
 ├── models/
 │   └── churn_pipeline.pkl         # Backup Model Pipeline Copy
 │
-├── notebooks/
-│   └── 01_eda.ipynb               # Exploratory Data Analysis Jupyter Notebook
-│
 └── src/
+    ├── eda.py                     # Programmatic Exploratory Data Analysis Script
     ├── preprocessing.py           # Data Loading, Cleaning & Preprocessor Pipeline
     ├── train.py                   # Model Training & Pipeline Serialization Script
     └── predict.py                 # Standalone Inference Script
@@ -161,7 +159,7 @@ customer-churn-prediction/
 
 ### 1. Clone Repository & Setup Environment
 ```bash
-git clone https://github.com/your-username/customer-churn-prediction.git
+git clone https://github.com/charan2319/customer-churn-prediction.git
 cd customer-churn-prediction
 
 python3 -m venv venv
@@ -169,7 +167,12 @@ source venv/bin/activate  # On Windows: venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-### 2. Run Streamlit Application
+### 2. Run EDA Analysis
+```bash
+python src/eda.py
+```
+
+### 3. Run Streamlit Application
 ```bash
 streamlit run app.py
 ```

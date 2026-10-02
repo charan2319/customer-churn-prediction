@@ -150,6 +150,8 @@ if st.button("Predict Churn", type="primary", use_container_width=True):
                     st.image("assets/churn_warning.png", width=140)
             else:
                 st.success("Customer is likely to STAY (Retained)")
+                if os.path.exists("assets/customer_retained.png"):
+                    st.image("assets/customer_retained.png", width=140)
 
         with rcol2:
             st.metric("Churn Probability", f"{churn_prob * 100:.1f}%")

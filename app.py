@@ -51,8 +51,8 @@ st.title("Customer Churn Prediction")
 st.write("Input customer demographics, account details, and subscribed services to predict churn probability.")
 st.markdown("---")
 
-# Single Page 3-Column Input Layout
-col1, col2, col3 = st.columns(3)
+# Top Section: Demographics & Contract Billing (2 Columns)
+col1, col2 = st.columns(2)
 
 with col1:
     st.subheader("Demographics & Account")
@@ -85,14 +85,23 @@ with col2:
         ]
     )
 
-with col3:
-    st.subheader("Subscribed Services")
+st.markdown("---")
+
+# Bottom Section: Subscribed Services (Spread across 3 Columns)
+st.subheader("Subscribed Services")
+scol1, scol2, scol3 = st.columns(3)
+
+with scol1:
     phone_service = st.selectbox("Phone Service", ["Yes", "No"])
     multiple_lines = st.selectbox("Multiple Lines", ["No", "Yes", "No phone service"])
     internet_service = st.selectbox("Internet Service", ["Fiber optic", "DSL", "No"])
+
+with scol2:
     online_security = st.selectbox("Online Security", ["No", "Yes", "No internet service"])
     online_backup = st.selectbox("Online Backup", ["No", "Yes", "No internet service"])
     device_protection = st.selectbox("Device Protection", ["No", "Yes", "No internet service"])
+
+with scol3:
     tech_support = st.selectbox("Tech Support", ["No", "Yes", "No internet service"])
     streaming_tv = st.selectbox("Streaming TV", ["No", "Yes", "No internet service"])
     streaming_movies = st.selectbox("Streaming Movies", ["No", "Yes", "No internet service"])

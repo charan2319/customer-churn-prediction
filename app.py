@@ -47,7 +47,7 @@ except Exception:
     st.stop()
 
 # Header Section
-st.title("Customer Churn Prediction")
+st.title("📊 Customer Churn Prediction")
 st.write("Input customer demographics, account details, and subscribed services to predict churn probability.")
 st.markdown("---")
 
@@ -55,7 +55,7 @@ st.markdown("---")
 col1, col2 = st.columns(2)
 
 with col1:
-    st.subheader("Demographics & Account")
+    st.subheader("👤 Demographics & Account")
     gender = st.selectbox("Gender", ["Male", "Female"])
     senior_citizen_str = st.selectbox("Senior Citizen", ["No", "Yes"])
     senior_citizen = 1 if senior_citizen_str == "Yes" else 0
@@ -64,7 +64,7 @@ with col1:
     tenure = st.number_input("Tenure (Months)", min_value=0, max_value=100, value=12, step=1)
 
 with col2:
-    st.subheader("Contract & Billing")
+    st.subheader("📄 Contract & Billing")
     contract = st.selectbox("Contract Type", ["Month-to-month", "One year", "Two year"])
     monthly_charges = st.number_input("Monthly Charges ($)", min_value=0.0, max_value=200.0, value=65.0, step=0.5)
     total_charges_input = st.text_input("Total Charges ($) [Optional]", value="780.0")
@@ -88,7 +88,7 @@ with col2:
 st.markdown("---")
 
 # Bottom Section: Subscribed Services (Spread across 3 Columns)
-st.subheader("Subscribed Services")
+st.subheader("🛠️ Subscribed Services")
 scol1, scol2, scol3 = st.columns(3)
 
 with scol1:
@@ -139,7 +139,7 @@ if st.button("Predict Churn", type="primary", use_container_width=True):
         churn_prob = float(probabilities[1])
         retention_prob = float(probabilities[0])
 
-        st.subheader("Prediction Result")
+        st.subheader("🎯 Prediction Result")
 
         rcol1, rcol2, rcol3 = st.columns(3)
 

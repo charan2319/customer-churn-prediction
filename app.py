@@ -6,6 +6,7 @@ Loads the complete saved Scikit-Learn pipeline and generates real-time predictio
 """
 
 import os
+import base64
 import joblib
 import pandas as pd
 import numpy as np
@@ -26,6 +27,11 @@ st.markdown("""
     [data-testid="stToolbar"] {visibility: hidden !important;}
     </style>
 """, unsafe_allow_html=True)
+
+# Helper function to convert image to base64 for inline flexbox layout
+def get_image_b64(path):
+    with open(path, "rb") as f:
+        return base64.b64encode(f.read()).decode()
 
 # Model file path
 MODEL_PATH = "churn_prediction_pipeline.pkl"
@@ -144,19 +150,28 @@ if st.button("Predict Churn", type="primary", use_container_width=True):
         rcol1, rcol2, rcol3 = st.columns(3)
 
         with rcol1:
-            img_col, txt_col = st.columns([1, 4])
             if prediction == 1:
-                with img_col:
-                    if os.path.exists("assets/churn_warning.png"):
-                        st.image("assets/churn_warning.png", width=65)
-                with txt_col:
-                    st.error("Customer is likely to CHURN")
+                if os.path.exists("assets/churn_warning.png"):
+                    b64_img = get_image_b64("assets/churn_warning.png")
+                    st.markdown(f"""
+                        <div style="display: flex; align-items: center; gap: 12px; margin-top: 6px;">
+                            <img src="data:image/png;base64,{b64_img}" width="50" style="object-fit: contain;" />
+                            <span style="color: #DC2626; font-size: 1.1rem; font-weight: 700;">Customer is likely to CHURN</span>
+                        </div>
+                    """, unsafe_allow_html=True)
+                else:
+                    st.markdown('<span style="color: #DC2626; font-size: 1.1rem; font-weight: 700;">Customer is likely to CHURN</span>', unsafe_allow_html=True)
             else:
-                with img_col:
-                    if os.path.exists("assets/customer_retained.png"):
-                        st.image("assets/customer_retained.png", width=65)
-                with txt_col:
-                    st.success("Customer is likely to STAY (Retained)")
+                if os.path.exists("assets/customer_retained.png"):
+                    b64_img = get_image_b64("assets/customer_retained.png")
+                    st.markdown(f"""
+                        <div style="display: flex; align-items: center; gap: 12px; margin-top: 6px;">
+                            <img src="data:image/png;base64,{b64_img}" width="50" style="object-fit: contain;" />
+                            <span style="color: #16A34A; font-size: 1.1rem; font-weight: 700;">Customer is likely to STAY (Retained)</span>
+                        </div>
+                    """, unsafe_allow_html=True)
+                else:
+                    st.markdown('<span style="color: #16A34A; font-size: 1.1rem; font-weight: 700;">Customer is likely to STAY (Retained)</span>', unsafe_allow_html=True)
 
         with rcol2:
             st.metric("Churn Probability", f"{churn_prob * 100:.1f}%")

@@ -144,14 +144,19 @@ if st.button("Predict Churn", type="primary", use_container_width=True):
         rcol1, rcol2, rcol3 = st.columns(3)
 
         with rcol1:
+            img_col, txt_col = st.columns([1, 4])
             if prediction == 1:
-                st.error("Customer is likely to CHURN")
-                if os.path.exists("assets/churn_warning.png"):
-                    st.image("assets/churn_warning.png", width=140)
+                with img_col:
+                    if os.path.exists("assets/churn_warning.png"):
+                        st.image("assets/churn_warning.png", width=65)
+                with txt_col:
+                    st.error("Customer is likely to CHURN")
             else:
-                st.success("Customer is likely to STAY (Retained)")
-                if os.path.exists("assets/customer_retained.png"):
-                    st.image("assets/customer_retained.png", width=140)
+                with img_col:
+                    if os.path.exists("assets/customer_retained.png"):
+                        st.image("assets/customer_retained.png", width=65)
+                with txt_col:
+                    st.success("Customer is likely to STAY (Retained)")
 
         with rcol2:
             st.metric("Churn Probability", f"{churn_prob * 100:.1f}%")

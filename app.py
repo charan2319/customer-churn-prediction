@@ -146,6 +146,8 @@ if st.button("Predict Churn", type="primary", use_container_width=True):
         with rcol1:
             if prediction == 1:
                 st.error("Customer is likely to CHURN")
+                if os.path.exists("assets/churn_warning.png"):
+                    st.image("assets/churn_warning.png", width=140)
             else:
                 st.success("Customer is likely to STAY (Retained)")
 

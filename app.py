@@ -17,6 +17,16 @@ st.set_page_config(
     layout="wide"
 )
 
+# Hide Streamlit developer top-right toolbar, header, and footer
+st.markdown("""
+    <style>
+    #MainMenu {visibility: hidden;}
+    footer {visibility: hidden;}
+    header {visibility: hidden;}
+    [data-testid="stToolbar"] {visibility: hidden !important;}
+    </style>
+""", unsafe_allow_html=True)
+
 # Model file path
 MODEL_PATH = "churn_prediction_pipeline.pkl"
 if not os.path.exists(MODEL_PATH):

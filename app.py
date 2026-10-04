@@ -31,7 +31,11 @@ st.markdown("""
     .header-anchor {display: none !important;}
     [data-testid="stHeaderActionElements"] {display: none !important;}
     a.anchor-link {display: none !important;}
-    h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {display: none !important;}
+    /* Reduce top whitespace above title */
+    .block-container, [data-testid="stAppViewBlockContainer"] {
+        padding-top: 1.5rem !important;
+        padding-bottom: 2rem !important;
+    }
     </style>
 """, unsafe_allow_html=True)
 

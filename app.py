@@ -16,6 +16,8 @@ import streamlit as st
 st.set_page_config(
     page_title="Customer Churn Prediction",
     layout="wide"
+)
+
 # Hide Streamlit top-right toolbar, share/edit/github buttons, header, and footer
 st.markdown("""
     <style>

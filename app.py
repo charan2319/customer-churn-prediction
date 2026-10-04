@@ -16,7 +16,17 @@ import streamlit as st
 st.set_page_config(
     page_title="Customer Churn Prediction",
     layout="wide"
-)
+# Hide Streamlit top-right toolbar, share/edit/github buttons, header, and footer
+st.markdown("""
+    <style>
+    #MainMenu {visibility: hidden;}
+    footer {visibility: hidden;}
+    header {visibility: hidden;}
+    [data-testid="stToolbar"] {visibility: hidden !important; display: none !important;}
+    [data-testid="stHeader"] {visibility: hidden !important; display: none !important;}
+    .stAppHeader {visibility: hidden !important; display: none !important;}
+    </style>
+""", unsafe_allow_html=True)
 
 # Helper function to convert image to base64 for inline flexbox layout
 def get_image_b64(path):

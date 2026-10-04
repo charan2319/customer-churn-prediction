@@ -18,16 +18,6 @@ st.set_page_config(
     layout="wide"
 )
 
-# Hide Streamlit developer top-right toolbar, header, and footer
-st.markdown("""
-    <style>
-    #MainMenu {visibility: hidden;}
-    footer {visibility: hidden;}
-    header {visibility: hidden;}
-    [data-testid="stToolbar"] {visibility: hidden !important;}
-    </style>
-""", unsafe_allow_html=True)
-
 # Helper function to convert image to base64 for inline flexbox layout
 def get_image_b64(path):
     with open(path, "rb") as f:

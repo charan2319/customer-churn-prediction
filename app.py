@@ -27,6 +27,11 @@ st.markdown("""
     [data-testid="stToolbar"] {visibility: hidden !important; display: none !important;}
     [data-testid="stHeader"] {visibility: hidden !important; display: none !important;}
     .stAppHeader {visibility: hidden !important; display: none !important;}
+    /* Hide header title anchor link chain icons */
+    .header-anchor {display: none !important;}
+    [data-testid="stHeaderActionElements"] {display: none !important;}
+    a.anchor-link {display: none !important;}
+    h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {display: none !important;}
     </style>
 """, unsafe_allow_html=True)
 

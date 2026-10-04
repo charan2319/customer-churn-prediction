@@ -45,9 +45,9 @@ def get_image_b64(path):
         return base64.b64encode(f.read()).decode()
 
 # Model file path
-MODEL_PATH = "churn_prediction_pipeline.pkl"
+MODEL_PATH = "models/churn_pipeline.pkl"
 if not os.path.exists(MODEL_PATH):
-    MODEL_PATH = "models/churn_pipeline.pkl"
+    MODEL_PATH = "churn_prediction_pipeline.pkl"
 
 
 @st.cache_resource

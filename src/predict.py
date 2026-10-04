@@ -9,16 +9,16 @@ import joblib
 import pandas as pd
 
 
-def load_pipeline(model_path: str = 'churn_prediction_pipeline.pkl'):
+def load_pipeline(model_path: str = 'models/churn_pipeline.pkl'):
     """
     Loads serialized machine learning pipeline from disk.
     """
     if not os.path.exists(model_path):
-        model_path = 'models/churn_pipeline.pkl'
+        model_path = 'churn_prediction_pipeline.pkl'
     return joblib.load(model_path)
 
 
-def predict_churn(customer_data: dict, model_path: str = 'churn_prediction_pipeline.pkl'):
+def predict_churn(customer_data: dict, model_path: str = 'models/churn_pipeline.pkl'):
     """
     Accepts raw customer data dictionary, applies saved pipeline, and returns prediction result.
     """

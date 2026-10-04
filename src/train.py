@@ -17,7 +17,7 @@ from sklearn.metrics import (
 from preprocessing import load_and_clean_data, prepare_features_and_target, split_data, get_preprocessor
 
 
-def train_and_save_pipeline(data_path: str = 'data/Telco-Customer-Churn.csv', model_output_path: str = 'churn_prediction_pipeline.pkl'):
+def train_and_save_pipeline(data_path: str = 'data/Telco-Customer-Churn.csv', model_output_path: str = 'models/churn_pipeline.pkl'):
     """
     Trains the full end-to-end machine learning pipeline and serializes it with joblib.
     """
@@ -51,10 +51,9 @@ def train_and_save_pipeline(data_path: str = 'data/Telco-Customer-Churn.csv', mo
     print(f"F1-Score:  {f1_score(y_test, y_pred):.4f}")
     print(f"ROC-AUC:   {roc_auc_score(y_test, y_prob):.4f}")
 
-    print(f"\n6. Saving fitted pipeline to '{model_output_path}' and 'models/churn_pipeline.pkl'...")
+    print(f"\n6. Saving fitted pipeline to '{model_output_path}'...")
     os.makedirs('models', exist_ok=True)
     joblib.dump(final_pipeline, model_output_path)
-    joblib.dump(final_pipeline, 'models/churn_pipeline.pkl')
     print("Pipeline successfully saved!")
     return final_pipeline
 
